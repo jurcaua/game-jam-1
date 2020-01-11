@@ -7,25 +7,31 @@ public class Valuable : MonoBehaviour
     public int price;
     public GameObject player;
     public float magnetism_strength = 0.2f;
+    public GameObject player_cone;
 
     private Transform target;
+    private MagneticRange magneticRange;
 
     // Start is called before the first frame update
     void Start()
     {
         target = player.transform;
+        magneticRange = player_cone.GetComponent("MagneticRange") as MagneticRange;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float closeness = Mathf.Max(0, 10 - Vector3.Distance(transform.position, target.position));
-
-        if (closeness > 0)
+        if (magneticRange.GetValuablesInRange().Contains(this))
         {
-            closeness = Mathf.Pow(closeness, 2);
-            float step = magnetism_strength * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, target.position, step * closeness);
+            float closeness = Mathf.Max(0, 10 - Vector3.Distance(transform.position, target.position));
+
+            if (closeness > 0)
+            {
+                closeness = Mathf.Pow(closeness, 2);
+                float step = magnetism_strength * Time.deltaTime; // calculate distance to move
+                transform.position = Vector3.MoveTowards(transform.position, target.position, step * closeness);
+            }
         }
     }
 
