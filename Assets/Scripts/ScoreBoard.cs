@@ -22,10 +22,10 @@ public class ScoreBoard : MonoBehaviour
         text = GetComponent<Text>();
     }
 
-    public void handleCollision(Metal metal)
+    public void handleCollision(Valuable obj)
     {
-        string metalType = metal.type();
-        score += scoreDict[metalType];
+        string vType = obj.title;
+        score += scoreDict[vType];
     }
     // Update is called once per frame
     void Update()
