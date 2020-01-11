@@ -51,6 +51,10 @@ public class PlayerControl : MonoBehaviour
         {
             moveRate /= 1.5f;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            transform.Translate(Vector3.up * 1 * 10, Space.Self);
+        }
 
        // rb.AddForce(transform.forward * moveX * moveRate, ForceMode.Force);
        // rb.AddForce(transform.right * moveZ * moveRate / 3, ForceMode.Force);
