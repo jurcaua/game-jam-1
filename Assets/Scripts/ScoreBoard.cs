@@ -32,6 +32,10 @@ public class ScoreBoard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = score.ToString("0.");
+        text.text = "Score: " + score.ToString("0.");
+        if (score > 100)
+            text.color = Color.blue;
+        if (score > 500)
+            text.color = Color.red;
     }
 }

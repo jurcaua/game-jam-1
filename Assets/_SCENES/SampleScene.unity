@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527d0ee9ca65f94e84e3c826bc9e37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0
+  price: 10
   player: {fileID: 302943401}
   magnetism_strength: 0.2
 --- !u!135 &2115607782
