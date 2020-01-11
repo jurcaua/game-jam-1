@@ -19,7 +19,7 @@ public class Valuable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float closeness = Mathf.Max(0, 10 - Vector3.Distance(transform.position, target.position));
+        float closeness = Mathf.Max(0, 15 - Vector3.Distance(transform.position, target.position));
 
         if (closeness > 0)
         {

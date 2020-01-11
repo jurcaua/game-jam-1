@@ -17,7 +17,7 @@ MonoBehaviour:
   lastModified: 637143510993774421
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5436346959489790671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
   Path: event:/SFX/metal_expel
   guid: 02d7f28e4083ae41b25ee153496f1e25
   Banks:
-  - {fileID: -8187396382193127677}
+  - {fileID: 5441706465446656028}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
   Path: event:/Character/Penguin
   guid: 1029ae1c9fb5b242b62556c1e3c6e01a
   Banks:
-  - {fileID: -8187396382193127677}
+  - {fileID: 5441706465446656028}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637143510993864184
+  lastModified: 637143514386651300
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -3349897762617571876}
-  - {fileID: -8187396382193127677}
+  - {fileID: 5441706465446656028}
   EditorEvents:
   - {fileID: -5436346959489790671}
   - {fileID: -3574322801036427648}
@@ -106,11 +106,29 @@ MonoBehaviour:
   - {fileID: 8322043423811819681}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -8187396382193127677}
+  - {fileID: 5441706465446656028}
   StringsBanks:
   - {fileID: -3349897762617571876}
-  stringsBankWriteTime: 637143510993864184
+  stringsBankWriteTime: 637143514386651300
   cacheVersion: 3
+--- !u!114 &5441706465446656028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637143514386641246
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &8322043423811819681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +144,7 @@ MonoBehaviour:
   Path: event:/Music/Music
   guid: 1e99033ad0e8d4428f0e3badf748114b
   Banks:
-  - {fileID: -8187396382193127677}
+  - {fileID: 5441706465446656028}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -149,7 +167,7 @@ MonoBehaviour:
   Path: event:/SFX/metal_absorb
   guid: 183f6ebed0c09042917908c618d25609
   Banks:
-  - {fileID: -8187396382193127677}
+  - {fileID: 5441706465446656028}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
