@@ -239,10 +239,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 322355790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2496f5c0fcdd474bb346ab610a58d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: f527d0ee9ca65f94e84e3c826bc9e37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
+  player: {fileID: 0}
+  magnetism_strength: 0.2
 --- !u!1 &758959540
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,10 +416,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 994486852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2496f5c0fcdd474bb346ab610a58d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: f527d0ee9ca65f94e84e3c826bc9e37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 10
+  price: 0
+  player: {fileID: 0}
+  magnetism_strength: 0.2
 --- !u!54 &994486854
 Rigidbody:
   m_ObjectHideFlags: 0
