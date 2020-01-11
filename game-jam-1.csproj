@@ -616,6 +616,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Constants.cs" />
     <Compile Include="Assets\Scripts\MagneticRange.cs" />
+    <Compile Include="Assets\Scripts\Valuable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages\com.unity.collab-proxy\Editor\Resources\Styles\CollabHistoryCommon.uss" />
