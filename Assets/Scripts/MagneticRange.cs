@@ -5,11 +5,11 @@ using UnityEngine;
 public class MagneticRange : MonoBehaviour
 {
     [HideInInspector]
-    public List<Valuable> valuablesInRange;
+    //public List<Valuable> valuablesInRange;
 
     void Start()
     {
-        valuablesInRange = new List<Valuable>();
+        //valuablesInRange = new List<Valuable>();
     }
 
     void Update()
