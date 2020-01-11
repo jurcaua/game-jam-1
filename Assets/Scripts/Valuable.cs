@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Valuable : MonoBehaviour
 {
-    public int price;
+    public int price = 10;
     public GameObject player;
     public float magnetism_strength = 0.2f;
 
     private Transform target;
 
+    private GameObject Scoreboard;
+
     // Start is called before the first frame update
     void Start()
     {
         target = player.transform;
+        Scoreboard = GameObject.Find("ScoreBoard");
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class Valuable : MonoBehaviour
     {
         if (GameObject.ReferenceEquals(collision.gameObject, player))
         {
-            // TODO: call scoreboard function, passing this.gameObject
+            Scoreboard.GetComponent<ScoreBoard>().handleCollision(this.gameObject);
             Debug.Log("Passing this.gameObject to scoreboard");
             Destroy(this.gameObject);
         }
