@@ -8,7 +8,7 @@ public class ScoreBoard : MonoBehaviour
     // Start is called before the first frame update
 
     //public for debuging
-    public int score;
+    public float score;
     Dictionary<string, int> scoreDict;
     Text text;
     void Start()
@@ -23,15 +23,21 @@ public class ScoreBoard : MonoBehaviour
         text = GetComponent<Text>();
     }
 
+    void clearscore()
+    {
+        score = 0f;
+    }
+
     public void handleCollision(GameObject obj)
     {
         //string vType = obj.title;
         //score += scoreDict[vType];
-        score += obj.GetComponent<Valuable>().price;
+        score += (float)obj.GetComponent<Valuable>().price;
     }
     // Update is called once per frame
     void Update()
     {
+        score -= Time.deltaTime;
         text.text = "Score: " + score.ToString("0.");
         if (score > 100)
             text.color = Color.blue;
