@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 10f;
     public float lookSpeed = 2f;
 
-    private Vector3 curLoc;
-    private Vector3 prevLoc;
+    private Vector3 forward;
+    private Vector3 right;
 
     private Rigidbody rb;
     private Animator anim;
@@ -24,51 +24,52 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 forward = (transform.position - mainCamera.position).normalized;
-        forward.y = 0;
-        Vector3 right = -Vector3.Cross(forward.normalized, transform.up.normalized);
+        RecalculateRelativeUnitVectors();
 
+        float verticalAxis = Input.GetAxis(Constants.MOVE_AXIS_VERTICAL);
+        float horizontalAxis = Input.GetAxis(Constants.MOVE_AXIS_HORIZONTAL);
+
+        bool movementOccured = false;
         Vector3 movementDirection = Vector3.zero;
-        bool doMove = false;
-        bool doRotate = false;
-
-        // Movement for forward and backwards
-        if (Input.GetKey(KeyCode.W))
+        if (verticalAxis != 0.0f)
         {
-            movementDirection = forward;
-            doMove = true;
-            doRotate = true;
+            movementDirection += forward * verticalAxis;
+            movementOccured = true;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (horizontalAxis != 0.0f)
         {
-            movementDirection = -forward;
-            doMove = true;
-            doRotate = true;
+            movementDirection += right * horizontalAxis;
+            movementOccured = true;
         }
 
-        // Movement for left and right
-        if (Input.GetKey(KeyCode.A))
+        if (movementOccured)
         {
-            movementDirection = -right;
-            doMove = true;
-            doRotate = true;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            movementDirection = right;
-            doMove = true;
-            doRotate = true;
+            PerformMovement(movementDirection);
+            PerformRotation(movementDirection);
         }
 
-        if (doMove)
-        {
-            transform.position += movementDirection * movementSpeed * Time.deltaTime;
-        }
-        if (doRotate)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection.normalized), lookSpeed * Time.deltaTime);
-        }
+        UpdateAnimations(movementOccured);
+    }
 
-        anim.SetBool("Forward", doMove);
+    void RecalculateRelativeUnitVectors()
+    {
+        forward = (transform.position - mainCamera.position).normalized;
+        forward.y = 0;
+        right = -Vector3.Cross(forward.normalized, transform.up.normalized);
+    }
+
+    void PerformMovement(Vector3 movementDirection)
+    {
+        transform.position += movementDirection.normalized * movementSpeed * Time.deltaTime;
+    }
+
+    void PerformRotation(Vector3 movementDirection)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection.normalized), lookSpeed * Time.deltaTime);
+    }
+
+    void UpdateAnimations(bool movementOccured)
+    {
+        anim.SetBool("Walking", movementOccured);
     }
 }
