@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             movementDirection = -forward;
             doMove = true;
-            doRotate = false;
+            doRotate = true;
         }
 
         // Movement for left and right
