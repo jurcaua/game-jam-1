@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public float blowBackForce;
 
-
-    // Start is called before the first frame update
+    private Rigidbody playerRb;
+    private MagneticRange magneticRange;
+    
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerRb = GetComponent<Rigidbody>();
+        magneticRange = GetComponentInChildren<MagneticRange>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -23,11 +20,30 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.CompareTag(Constants.VALUABLE_TAG))
         {
             Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-            if (rb)
+            MeshFilter meshFilter = collision.gameObject.GetComponent<MeshFilter>();
+            if (!rb)
             {
-                collision.transform.parent = transform;
-                rb.constraints = RigidbodyConstraints.FreezePosition;
-                rb.detectCollisions = false;
+                Debug.LogError("No Rigidbody!");
+                return;
+            }
+            if (!meshFilter)
+            {
+                Debug.LogError("No MeshFilter!");
+                return;
+            }
+
+            // set the parent of the object to be the player now (moves with player now)
+            collision.transform.parent = transform;
+
+            // freeze pos and rot, and stop collision (no weird, rigidbody physics + no more colliding with magnetic cone)
+            rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+            rb.detectCollisions = false;
+
+            // push player back based on the mesh size
+            // we only push back the player if they sucked the object to them, otherwise it just sticks
+            if (magneticRange.magnetismActive)
+            {
+                playerRb.AddForce((transform.position - collision.transform.position).normalized * Vector3.Scale(collision.transform.localScale, meshFilter.mesh.bounds.size).magnitude * blowBackForce, ForceMode.Impulse);
             }
         }
     }

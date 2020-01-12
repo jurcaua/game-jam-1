@@ -7,6 +7,9 @@ public class MagneticRange : MonoBehaviour
 {
     public Transform magnetTransform;
 
+    [HideInInspector]
+    public bool magnetismActive = false;
+
     private HashSet<Valuable> valuablesInRange;
 
     void Start()
@@ -28,10 +31,15 @@ public class MagneticRange : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            magnetismActive = true;
             if (valuablesInRange.Count > 0)
             {
                 GetValuablesInRange().ForEach(v => v.GetCloser(magnetTransform));
             }
+        }
+        else
+        {
+            magnetismActive = false;
         }
     }
 

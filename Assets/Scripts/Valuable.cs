@@ -26,7 +26,6 @@ public class Valuable : MonoBehaviour
             float step = magnetismStrength * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, target.position, step * closeness);
         }
-        Debug.Log(closeness);
     }
 
     //private void OnCollisionEnter(Collision collision)
