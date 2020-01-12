@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movementSpeed = 10f;
-    public float lookSpeed = 2f;
+    [Header("Multiplier Values")]
+    public float movementSpeed = 20f;
+    public float lookSpeed = 3f;
 
+    [Header("External Components")]
+    public Transform mainCamera;
+
+    // Used for keeping track of player/camera-relative directions
     private Vector3 forward;
     private Vector3 right;
-
-    private Rigidbody rb;
+    
+    // Private component references
     private Animator anim;
-
-    public Transform mainCamera;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        if (!anim)
+        {
+            Debug.LogError($"Missing animator component for {name}!");
+        }
     }
 
     // Update is called once per frame
