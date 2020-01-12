@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MagneticRange : MonoBehaviour
 {
+    public Transform magnetTransform;
+
     private HashSet<Valuable> valuablesInRange;
 
     void Start()
@@ -21,6 +23,14 @@ public class MagneticRange : MonoBehaviour
             foreach (Valuable valuable in valuablesInRange)
             {
                 Debug.Log($" - {valuable.price}");
+            }
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            if (valuablesInRange.Count > 0)
+            {
+                GetValuablesInRange().ForEach(v => v.GetCloser(magnetTransform));
             }
         }
     }

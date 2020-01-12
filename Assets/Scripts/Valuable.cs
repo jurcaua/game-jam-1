@@ -5,37 +5,37 @@ using UnityEngine;
 public class Valuable : MonoBehaviour
 {
     public int price;
-    public GameObject player;
-    public float magnetism_strength = 0.2f;
+    //public GameObject player;
+    public float magnetismStrength = 0.2f;
 
-    private Transform target;
+    //private Transform target;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        target = player.transform;
-    }
+    //void Start()
+    //{
+    //    target = player.transform;
+    //}
 
-    // Update is called once per frame
-    void Update()
+    public void GetCloser(Transform target)
     {
-        float closeness = Mathf.Max(0, 10 - Vector3.Distance(transform.position, target.position));
+        float closeness = Mathf.Max(8, 10 - Vector3.Distance(transform.position, target.position));
 
         if (closeness > 0)
         {
             closeness = Mathf.Pow(closeness, 2);
-            float step = magnetism_strength * Time.deltaTime; // calculate distance to move
+            float step = magnetismStrength * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, target.position, step * closeness);
         }
+        Debug.Log(closeness);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (ReferenceEquals(collision.gameObject, player))
-        {
-            // TODO: call scoreboard function, passing this.gameObject
-            Debug.Log("Passing this.gameObject to scoreboard");
-            Destroy(gameObject);
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (ReferenceEquals(collision.gameObject, player))
+    //    {
+    //        // TODO: call scoreboard function, passing this.gameObject
+    //        Debug.Log("Passing this.gameObject to scoreboard");
+    //        Destroy(gameObject);
+    //    }
+    //}
 }
