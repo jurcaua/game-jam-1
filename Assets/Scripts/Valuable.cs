@@ -31,11 +31,11 @@ public class Valuable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (GameObject.ReferenceEquals(collision.gameObject, player))
+        if (ReferenceEquals(collision.gameObject, player))
         {
             // TODO: call scoreboard function, passing this.gameObject
             Debug.Log("Passing this.gameObject to scoreboard");
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
