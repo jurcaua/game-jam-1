@@ -29,7 +29,7 @@ public class MagneticRange : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             magnetismActive = true;
             if (valuablesInRange.Count > 0)
@@ -50,7 +50,7 @@ public class MagneticRange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Constants.VALUABLE_TAG))
+        if (other.CompareTag(Constants.TAG_VALUABLE))
         {
             Valuable valuable = other.GetComponent<Valuable>();
             if (!valuable)
@@ -74,7 +74,7 @@ public class MagneticRange : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(Constants.VALUABLE_TAG))
+        if (other.CompareTag(Constants.TAG_VALUABLE))
         {
             Valuable valuable = other.GetComponent<Valuable>();
             if (!valuable)
