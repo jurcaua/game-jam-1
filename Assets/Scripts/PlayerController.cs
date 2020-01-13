@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             PerformRotation(movementDirection);
         }
 
-        UpdateAnimations(movementOccured);
+        UpdateAnimations(Mathf.Max(Mathf.Abs(verticalAxis), Mathf.Abs(horizontalAxis)));
     }
 
     void RecalculateRelativeUnitVectors()
@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection.normalized), lookSpeed * Time.deltaTime);
     }
 
-    void UpdateAnimations(bool movementOccured)
+    void UpdateAnimations(float movementSpeed)
     {
-        anim.SetBool("Walking", movementOccured);
+        anim.SetFloat("WalkingSpeed", movementSpeed);
     }
 }
